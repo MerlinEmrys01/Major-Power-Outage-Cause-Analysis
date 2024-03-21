@@ -30,6 +30,17 @@ Here are the relevant columns for our study:
 
 ## **Data Cleaning and Exploratory Data Analysis**
 
+The cleaned dataframe's first 4 rows look like this:
+
+| US.STATE   | CAUSE.CATEGORY     |   OUTAGE.DURATION | DEMAND.LOSS.MW   | CLIMATE.REGION     | CLIMATE.CATEGORY   |
+|:-----------|:-------------------|------------------:|:-----------------|:-------------------|:-------------------|
+| Minnesota  | severe weather     |              3060 | nan              | East North Central | normal             |
+| Minnesota  | intentional attack |                 1 | nan              | East North Central | normal             |
+| Minnesota  | severe weather     |              3000 | nan              | East North Central | cold               |
+| Minnesota  | severe weather     |              2550 | nan              | East North Central | normal             |
+| Minnesota  | severe weather     |              1740 | <NA>             | East North Central | warm               |
+
+
 <iframe
   src="assets/Counts by Cause Category.html"
   width="900"
@@ -37,4 +48,3 @@ Here are the relevant columns for our study:
   frameborder="0"
 ></iframe>
 
-test2
