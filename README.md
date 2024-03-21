@@ -25,3 +25,5 @@ Here are the relevant columns for our study:
 - `'DEMAND.LOSS.MW'`: Amount of peak demand lost during an outage event (in Megawatts), indicating the severity of the outage.
 - `'CLIMATE.REGION'`: U.S. Climate regions as specified by the National Centers for Environmental Information, providing climatic context.
 - `'CLIMATE.CATEGORY'`: Represents the climate episodes corresponding to the years, offering insights into how weather conditions influence outages.
+
+More detailed descriptions of the dataset can be found here: https://www.sciencedirect.com/science/article/pii/S2352340918307182
