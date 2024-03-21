@@ -26,4 +26,4 @@ Here are the relevant columns for our study:
 - `'CLIMATE.REGION'`: U.S. Climate regions as specified by the National Centers for Environmental Information, providing climatic context.
 - `'CLIMATE.CATEGORY'`: Represents the climate episodes corresponding to the years, offering insights into how weather conditions influence outages.
 
-<a href="https://www.sciencedirect.com/science/article/pii/S2352340918307182" target="_blank">More detailed descriptions of the dataset can be found here.</a>
+<a href="https://www.sciencedirect.com/science/article/pii/S2352340918307182" target="_blank">Click to see the full dataset and more detailed descriptions for each variable.</a>
