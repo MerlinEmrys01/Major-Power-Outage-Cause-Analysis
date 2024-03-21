@@ -116,6 +116,7 @@ Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the c
 
 Since our main question is centered around power outage durations and causes, we will be doing univariate analysis on the distributions of `'CAUSE.CATEGORY'` and `'OUTAGE.DURATION'`.
 
+This bar chart shows the distribution of `'CAUSE.CATEGORY'`:
 <iframe
   src="assets/Counts by Cause Category.html"
   width="900"
@@ -123,9 +124,15 @@ Since our main question is centered around power outage durations and causes, we
   frameborder="0"
 ></iframe>
 
-This bar chart shows the distribution of `'CAUSE.CATEGORY'`, and we could tell from the chart that within the recoreded major power outages, `severe weather`, `intentional attack`, and `system operability disruption` are the top 3 most popular cuases, with `severe weather` being the most significant cause.s
+- We could tell from the chart that within the recoreded major power outages, `severe weather`, `intentional attack`, and `system operability disruption` were the top 3 most popular cuases, with `severe weather` being the most significant cause.
 
 
+This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were so many unique duration lengths, we engineered a feature called `Duration Category` and categorized the durations into 4 different levels, `Short`, `Medium`, `Long`, and `No Data`:
+
+Outages in the `Short` category last up to an hour (60 minutes)
+Outages in the `Medium` category last up to a day (1440 minutes)
+Outages in the `Long` category last more than a day (more than 1440 minutes)
+Outages in the `No Data` category have no recoreded duration in the given dataset
 
 <iframe
   src="assets/Duration Categories Distribution.html"
@@ -134,6 +141,7 @@ This bar chart shows the distribution of `'CAUSE.CATEGORY'`, and we could tell f
   frameborder="0"
 ></iframe>
 
+- From this pie chart we could conclude that most of the recoreded major power outages in this dataset has `Medium` or `Long` outage durations.
 
 
 
