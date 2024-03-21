@@ -112,11 +112,18 @@ Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the c
 </table>
 
 
-
+### Univariate Analysis: cause category counts
 
 
 <iframe
   src="assets/Counts by Cause Category.html"
+  width="900"
+  height="1000"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/Duration Categories Distribution.html"
   width="900"
   height="1000"
   frameborder="0"
