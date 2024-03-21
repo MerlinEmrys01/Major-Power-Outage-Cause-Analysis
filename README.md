@@ -30,16 +30,11 @@ Here are the relevant columns for our study:
 
 ## **Data Cleaning and Exploratory Data Analysis**
 
-The cleaned dataframe's first 4 rows look like this:
+# Data Cleaning
 
-<!-- | US.STATE   | CAUSE.CATEGORY     |   OUTAGE.DURATION | DEMAND.LOSS.MW   | CLIMATE.REGION     | CLIMATE.CATEGORY   |
-|:-----------|:-------------------|------------------:|:-----------------|:-------------------|:-------------------|
-| Minnesota  | severe weather     |              3060 | nan              | East North Central | normal             |
-| Minnesota  | intentional attack |                 1 | nan              | East North Central | normal             |
-| Minnesota  | severe weather     |              3000 | nan              | East North Central | cold               |
-| Minnesota  | severe weather     |              2550 | nan              | East North Central | normal             |
-| Minnesota  | severe weather     |              1740 | <NA>             | East North Central | warm               |
- -->
+
+
+The cleaned dataframe's first 4 rows look like this:
 
  <style>
 .markdown-table {
@@ -119,3 +114,93 @@ The cleaned dataframe's first 4 rows look like this:
   frameborder="0"
 ></iframe>
 
+
+
+
+aggregate table:
+<style>
+.markdown-table {
+  font-size: 90%;
+  width: 100%;
+}
+.markdown-table th {
+  background-color: #f2f2f2;
+}
+.markdown-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.markdown-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+</style>
+
+<table class="markdown-table">
+  <thead>
+    <tr>
+      <th>CAUSE.CATEGORY</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>equipment failure</td>
+      <td>1850.56</td>
+      <td>224</td>
+      <td>10618.28</td>
+      <td>1</td>
+      <td>78377</td>
+    </tr>
+    <tr>
+      <td>fuel supply emergency</td>
+      <td>13484.03</td>
+      <td>3960</td>
+      <td>21012.32</td>
+      <td>1</td>
+      <td>108653</td>
+    </tr>
+    <tr>
+      <td>intentional attack</td>
+      <td>521.93</td>
+      <td>92.5</td>
+      <td>1561.35</td>
+      <td>1</td>
+      <td>21360</td>
+    </tr>
+    <tr>
+      <td>islanding</td>
+      <td>200.55</td>
+      <td>77.5</td>
+      <td>306.11</td>
+      <td>1</td>
+      <td>1254</td>
+    </tr>
+    <tr>
+      <td>public appeal</td>
+      <td>1468.45</td>
+      <td>455</td>
+      <td>2032.24</td>
+      <td>30</td>
+      <td>11867</td>
+    </tr>
+    <tr>
+      <td>severe weather</td>
+      <td>3899.71</td>
+      <td>2464</td>
+      <td>5144.38</td>
+      <td>1</td>
+      <td>49320</td>
+    </tr>
+    <tr>
+      <td>system operability disruption</td>
+      <td>747.09</td>
+      <td>222</td>
+      <td>2249.38</td>
+      <td>5</td>
+      <td>23187</td>
+    </tr>
+  </tbody>
+</table>
