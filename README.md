@@ -1,8 +1,7 @@
-<!-- # <span style="color: blue; text-decoration: underline; font-weight: bold;">Watt's Up! A Major Power Outage Cause Analysis</span> -->
 # Watt's Up!
-## A Major Power Outage Cause Analysis
+## A Major Power Outage Analysis In The US From 2000 To @016
 
-This is a comprehensive project reflecting under course DSC80  
+This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building and model fairness analysis under course DSC 80 at UC San Diego.
 
 By Yiran Zhao and Chengxi Xu
 
