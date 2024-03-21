@@ -30,7 +30,7 @@ Here are the relevant columns for our study:
 
 ## **Data Cleaning and Exploratory Data Analysis**
 
-# Data Cleaning 
+### Data Cleaning 
 
 We began our project by changing the `outage` dataset type from `xlsx` to `csv`, and imported data from the corrected file `outage.csv` into a pandas DataFrame. We identified that the first row contained units rather than actual data, so we removed it for clarity and accuracy. To ensure we only work with relevant data and to avoide doing unnecessary computation on irrelevant columns, we made a new dataframe called `clean` that only contains columns that pertained to our analysis: `'U.S._STATE'`, `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'DEMAND.LOSS.MW'`, `'CLIMATE.REGION'`, and `'CLIMATE.CATEGORY'`. 
 
@@ -38,21 +38,21 @@ During the process, we noticed that some numeric columns like `OUTAGE.DURATION` 
 
 We also discovered that there are some values in the `'DEMAND.LOSS.MW'` column that are smaller than 300 megawatts, which does not make sense in this dataset as it contains only major power outages with at least 300 MW demand loss, therefore we treated those values as incorrect entries and converted them into `NaN` as well for consistency, and will be addressing them later on in the project.
 
-Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the consistent naming conventions used across the dataset. The first five rows of the cleansed dataframe can be seen below using `clean.head()`
+Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the consistent naming conventions used across the dataset. The first five rows of the cleansed dataframe can be seen below using `clean.head()`:
 
  <style>
 .markdown-table {
-  font-size: 90%; /* Adjusts the font size to be smaller */
-  width: 100%; /* Optional: Fits the table width to the container */
+  font-size: 90%; 
+  width: 100%; 
 }
 .markdown-table th {
-  background-color: #f2f2f2; /* Light grey background for column headers */
+  background-color: #f2f2f2; 
 }
 .markdown-table tr:nth-child(even) {
-  background-color: #f9f9f9; /* Zebra striping for even rows */
+  background-color: #f9f9f9; 
 }
 .markdown-table tr:nth-child(odd) {
-  background-color: #ffffff; /* White background for odd rows */
+  background-color: #ffffff;
 }
 </style>
 
@@ -110,6 +110,10 @@ Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the c
     </tr>
   </tbody>
 </table>
+
+
+
+
 
 <iframe
   src="assets/Counts by Cause Category.html"
