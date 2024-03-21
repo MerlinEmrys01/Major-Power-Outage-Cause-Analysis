@@ -1,7 +1,10 @@
-# <span style="color: blue; text-decoration: underline; font-weight: bold;">Watt's Up! A Major Power Outage Cause Analysis</span>
+<!-- # <span style="color: blue; text-decoration: underline; font-weight: bold;">Watt's Up! A Major Power Outage Cause Analysis</span> -->
+# Watt's Up!
+## A Major Power Outage Cause Analysis
 
 This is a comprehensive project reflecting under course DSC80  
-By Claire and Jennifer
+
+By Yiran Zhao and Chengxi Xu
 
 ## **Introduction**
 
