@@ -1,7 +1,7 @@
 # Watt's Up!
 ## A US Major Power Outage Analysis
 
-This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building and model fairness analysis under course DSC 80 at UC San Diego.
+This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building and model fairness analysis under the course DSC 80 at UC San Diego.
 
 By Yiran Zhao and Chengxi Xu
 
