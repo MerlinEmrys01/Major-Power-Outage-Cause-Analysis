@@ -32,7 +32,7 @@ Here are the relevant columns for our study:
 
 <iframe
   src="assets/Counts by Cause Category.html"
-  width="900"
-  height="1000"
+  width="1000"
+  height="1200"
   frameborder="0"
 ></iframe>
