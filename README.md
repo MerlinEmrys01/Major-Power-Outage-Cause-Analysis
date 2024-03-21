@@ -140,12 +140,19 @@ This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were s
   frameborder="0"
 ></iframe>
 
-- From this pie chart we could conclude that most of the recoreded major power outages in this dataset has `Medium` or `Long` outage durations.
+- From this pie chart we could conclude that most of the recoreded major power outages in this dataset has either `Medium` or `Long` outage durations.
 
 
 ### Bivariate Analysis
 
-In our bivariate analysis, we 
+In our bivariate analysis, we will be using a box plot to see if there's a significant difference in average outage duration given different cause categories.
+
+<iframe
+  src="assets/Outage Duration by Cause Category.html"
+  width="800"
+  height="800"
+  frameborder="0"
+></iframe>
 
 
 
