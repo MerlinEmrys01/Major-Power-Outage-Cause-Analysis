@@ -33,6 +33,6 @@ Here are the relevant columns for our study:
 <iframe
   src="assets/Counts by Cause Category.html"
   width="900"
-  height="800"
+  height="1000"
   frameborder="0"
 ></iframe>
