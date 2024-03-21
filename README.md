@@ -112,8 +112,9 @@ Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the c
 </table>
 
 
-### Univariate Analysis: cause category counts
+### Univariate Analysis
 
+Since our main question is centered around power outage durations and causes, we will be doing univariate analysis on the distributions of `'CAUSE.CATEGORY'` and `'OUTAGE.DURATION'`.
 
 <iframe
   src="assets/Counts by Cause Category.html"
@@ -121,6 +122,10 @@ Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the c
   height="1000"
   frameborder="0"
 ></iframe>
+
+This bar chart shows the distribution of `'CAUSE.CATEGORY'`, and we could tell from the chart that within the recoreded major power outages, `severe weather`, `intentional attack`, and `system operability disruption` are the top 3 most popular cuases, with `severe weather` being the most significant cause.s
+
+
 
 <iframe
   src="assets/Duration Categories Distribution.html"
