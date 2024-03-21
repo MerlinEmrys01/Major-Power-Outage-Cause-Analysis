@@ -32,14 +32,85 @@ Here are the relevant columns for our study:
 
 The cleaned dataframe's first 4 rows look like this:
 
-| US.STATE   | CAUSE.CATEGORY     |   OUTAGE.DURATION | DEMAND.LOSS.MW   | CLIMATE.REGION     | CLIMATE.CATEGORY   |
+<!-- | US.STATE   | CAUSE.CATEGORY     |   OUTAGE.DURATION | DEMAND.LOSS.MW   | CLIMATE.REGION     | CLIMATE.CATEGORY   |
 |:-----------|:-------------------|------------------:|:-----------------|:-------------------|:-------------------|
 | Minnesota  | severe weather     |              3060 | nan              | East North Central | normal             |
 | Minnesota  | intentional attack |                 1 | nan              | East North Central | normal             |
 | Minnesota  | severe weather     |              3000 | nan              | East North Central | cold               |
 | Minnesota  | severe weather     |              2550 | nan              | East North Central | normal             |
 | Minnesota  | severe weather     |              1740 | <NA>             | East North Central | warm               |
+ -->
 
+ <style>
+.markdown-table {
+  font-size: 90%; /* Adjusts the font size to be smaller */
+  width: 100%; /* Optional: Fits the table width to the container */
+}
+.markdown-table th {
+  background-color: #f2f2f2; /* Light grey background for column headers */
+}
+.markdown-table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Zebra striping for even rows */
+}
+.markdown-table tr:nth-child(odd) {
+  background-color: #ffffff; /* White background for odd rows */
+}
+</style>
+
+<table class="markdown-table">
+  <thead>
+    <tr>
+      <th>US.STATE</th>
+      <th>CAUSE.CATEGORY</th>
+      <th>OUTAGE.DURATION</th>
+      <th>DEMAND.LOSS.MW</th>
+      <th>CLIMATE.REGION</th>
+      <th>CLIMATE.CATEGORY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>3060</td>
+      <td>nan</td>
+      <td>East North Central</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>intentional attack</td>
+      <td>1</td>
+      <td>nan</td>
+      <td>East North Central</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>3000</td>
+      <td>nan</td>
+      <td>East North Central</td>
+      <td>cold</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>2550</td>
+      <td>nan</td>
+      <td>East North Central</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>1740</td>
+      <td>&lt;NA&gt;</td>
+      <td>East North Central</td>
+      <td>warm</td>
+    </tr>
+  </tbody>
+</table>
 
 <iframe
   src="assets/Counts by Cause Category.html"
