@@ -29,3 +29,10 @@ Here are the relevant columns for our study:
 <a href="https://www.sciencedirect.com/science/article/pii/S2352340918307182" target="_blank">Note: Descriptions of the relevant columns are taken from this dataset's official publisher. Click here to see the full dataset and more detailed descriptions for each variable.</a>
 
 ## **Data Cleaning and Exploratory Data Analysis**
+
+<iframe
+  src="assets/Counts by Cause Category.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
