@@ -1,5 +1,5 @@
 # Watt's Up!
-## A Major Power Outage Analysis In The US From 2000 To @016
+## A US Major Power Outage Analysis
 
 This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building and model fairness analysis under course DSC 80 at UC San Diego.
 
@@ -11,7 +11,7 @@ In today's world, reliable electricity is essential. But what happens when the l
 
 Our project explores an extensive dataset that documents major power outage events across the continental United States from January 2000 to July 2016. This dataset provides a comprehensive look at the severe weather-induced power outages along with various geographical, climatic, and economic characteristics of the affected states. With a total of 55 variables, the dataset offers a rich repository for analyzing the patterns and causes behind significant power outages that impact at least 50,000 customers or result in an unplanned firm load loss of at least 300 MW, defined as a major power outage by the Department of Energy.
 
-Central to our investigation is the question: Are outage durations significantly impacted by the outage causes?
+Our main investigation question is: <strong><u>Are outage durations significantly impacted by the outage causes?</u></strong>
 
 Now, why should this question matter to us and to our readers? Understanding the correlations between outage causes and their durations can have real-world applications, enhancing our preparedness and response strategies to minimize future power disruptions. Given that most people experience at least one power outage annually, identifying specific causes that significantly affect outage duration could inform better prevention and mitigation strategies, potentially reducing the frequency and severity of future outages.
 
