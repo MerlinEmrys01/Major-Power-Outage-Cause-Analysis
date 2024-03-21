@@ -120,7 +120,7 @@ This bar chart shows the distribution of `'CAUSE.CATEGORY'`:
 <iframe
   src="assets/Counts by Cause Category.html"
   width="800"
-  height="500"
+  height="300"
   frameborder="0"
 ></iframe>
 
@@ -136,7 +136,7 @@ This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were s
 <iframe
   src="assets/Duration Categories Distribution.html"
   width="800"
-  height="500"
+  height="300"
   frameborder="0"
 ></iframe>
 
@@ -150,11 +150,11 @@ In our bivariate analysis, we will be using a box plot to see if there's a signi
 <iframe
   src="assets/Outage Duration by Cause Category.html"
   width="800"
-  height="500"
+  height="300"
   frameborder="0"
 ></iframe>
 
-
+- From the box plot, we could tell that `fule supply emergency` has t
 
 
 
