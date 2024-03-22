@@ -535,7 +535,7 @@ After feature engineering, we tried the same steps as our baseline model, except
 
 The testing score only improve very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
 
-We carefully reviewed the data we have, and realized that we actually don't always have a good amount of data in every cause category:
+We carefully reviewed the data we have, and realized that we actually don't always have a good amount of data in every cause category for accurate prediction:
 
 <style>
 .markdown-table {
@@ -590,3 +590,5 @@ We carefully reviewed the data we have, and realized that we actually don't alwa
     </tr>
   </tbody>
 </table>
+
+To solve this, we decided to drop some outliers, which includes outliers that fall outside of roughly 99% Confidence Interval, and those who's outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duraion and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` is still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
