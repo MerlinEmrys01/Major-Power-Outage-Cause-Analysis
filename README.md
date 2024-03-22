@@ -370,6 +370,7 @@ Accuracy is particularly useful for our models' assessments due to its simple de
 
 It also offers a baseline insight into the model’s effectiveness. However, we recognize accuracy's limitations in imbalanced datasets, where it might not fully capture the model's performance nuances. Thus, while accuracy was chosen for its initial clarity on the model's predictive capabilities, we remain open to incorporating more nuanced metrics in the future like Precision, Recall, and F1 Score for a comprehensive evaluation, depending on the dataset specifics and our analysis objectives.
 
+**For comparison consistency, we will be using the same unseen and seen datasets for both the baseline model and the final model so we could compare their accuracy score on the same unit.**
 
 ## **Baseline Model**
 
@@ -377,13 +378,15 @@ Our baseline model is a **multiclass decision tree** used to predict the `'CAUSE
 
 Both `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` are **quantitative** columns, we performed imputation on these features to handle any missing values, ensuring that our dataset was complete and ready for analysis. We purposely left those two variables as it is without performing any feature engineering to compare our baseline model with the improved one later. This baseline model is intended to be a very simple model to be compared to the final model.
 
-To create our baseline model, we split our imputed dataset into training and testing sets using the basic `train_test_split()` method, ensuring to exclude non-predictive columns such as `'US.STATE'`, `'CLIMATE.REGION'`, and `'CLIMATE.CATEGORY'`. After training the decision tree classifier on the training set, we evaluated its performance on both the training and testing sets using `.score()`:
+To create our baseline model, we split our imputed dataset into training and testing sets using the basic `train_test_split()` method and ensured to exclude the response variable `'CAUSE.CATEGORY'` from X, the independent variable. Note that the same training and testing set will be used to train and test both the baseline and final prediction models.
 
-**Training Score/Accuracy**: 0.9956255468066492
+To train our baseline model, we created a `pipeline` that only selected the `'OUTAGE.DURATION'` column and the `'DEMAND.LOSS.MW'` column. After training the decision tree classifier on the training set after applying the pipeline, we evaluated its performance on both the training and testing sets using `.score()`:
 
-**Testing Score/Accuracy**: 0.7303664921465969
+**Training Score/Accuracy**: 0.9921259842519685
 
-The training and testing scores seemed quite different, as the training score was almost perfect and the testing score only reached about 73%. This is a sign that the prediction model **overfitted** on the training set, <u>reducing its generalization ability.</u>
+**Testing Score/Accuracy**: 0.7617801047120419
+
+The training and testing scores seemed quite different, as the training score was almost perfect and the testing score only reached about 76%. This is a sign that the prediction model **overfitted** on the training set, <u>reducing its generalization ability.</u>
 
 ## **Final Model**
 
