@@ -394,205 +394,52 @@ To improve the accuracy of our prediction, we thought of a couple of steps to ex
 
 First, we recognized that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**.
 
-We wanted to add 2 more feature columns to improve the prediction accuracy, and we chose the following 2 categorical columns `'CLIMATE.REGION'` and `'CLIMATE.CATEGORY'`, because we thought they might have some correlation with one of the causes `severe weather` since weather and climate are very correlated.
+We wanted to add 2 more feature columns to improve the prediction accuracy, and we chose the following 2 categorical columns `'CLIMATE.REGION'` and `'CLIMATE.CATEGORY'`, because we thought they might have some correlation with one of the causes `severe weather` since weather and climate are usually talked about toghther.
 
-In order to use those two categorical variables, we performed the following feature engineering:
+In order to use those two categorical variables, we performed the following feature engineering through a new `pipeline`:
 
 `'CLIMATE.CATEGORY'`: only contains `'Warm'`, `'Cold'` or `'Normal'`
-- it is an **ordinal** categorical variable that can be represented by a list of meaningful ordered numbers, therefore we performed <u>ordinal encoding</u> and added it as a feature in our prediction model
+- it is an **ordinal** categorical variable that can be represented by a list of meaningful ordered numbers, therefore we performed <u>ordinal encoding</u> using `FunctionTransformer` and added it as a feature to our prediction model through `ColumnTransformer`
 
 `'CLIMATE.REGION'`: since this variable describes the climate region of the outage, there is no order between its unique values
-- it is a **nominal** categorical variable that can be made useful after performing <u>One Hot Encoding</u>
-
-The resulting dataframe looks like this:
-
-<style>
-.markdown-table {
-  font-size: 90%;
-  width: 100%;
-}
-.markdown-table th {
-  background-color: #f2f2f2;
-}
-.markdown-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-.markdown-table tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-</style>
-<table class="markdown-table">
-  <thead>
-    <tr>
-      <th>US.STATE</th>
-      <th>CAUSE.CATEGORY</th>
-      <th>OUTAGE.DURATION</th>
-      <th>DEMAND.LOSS.MW</th>
-      <th>CLIMATE.REGION</th>
-      <th>CLIMATE.CATEGORY</th>
-      <th>CLIMATE.REGION == East North Central</th>
-      <th>CLIMATE.REGION == Central</th>
-      <th>CLIMATE.REGION == South</th>
-      <th>CLIMATE.REGION == Southeast</th>
-      <th>CLIMATE.REGION == Northwest</th>
-      <th>CLIMATE.REGION == Southwest</th>
-      <th>CLIMATE.REGION == Northeast</th>
-      <th>CLIMATE.REGION == West North Central</th>
-      <th>CLIMATE.REGION == West</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Minnesota</td>
-      <td>severe weather</td>
-      <td>3060</td>
-      <td>850</td>
-      <td>East North Central</td>
-      <td>2</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Minnesota</td>
-      <td>intentional attack</td>
-      <td>1</td>
-      <td>455</td>
-      <td>East North Central</td>
-      <td>2</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Minnesota</td>
-      <td>severe weather</td>
-      <td>3000</td>
-      <td>1250</td>
-      <td>East North Central</td>
-      <td>3</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Minnesota</td>
-      <td>severe weather</td>
-      <td>2550</td>
-      <td>746</td>
-      <td>East North Central</td>
-      <td>2</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>Minnesota</td>
-      <td>severe weather</td>
-      <td>1740</td>
-      <td>700</td>
-      <td>East North Central</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+- it is a **nominal** categorical variable that can be made useful after performing <u>One Hot Encoding</u>, which was also done in the ColumnTransformer using `OneHotEncoder()`
 
 After feature engineering, we tried the same steps as our baseline model, except this time using a Random Forest, and got:
 
-**Training Score/Accuracy**: 0.9991251093613298
+**Training Score/Accuracy**: 0.9982502187226596
 
-**Testing Score/Accuracy**: 0.7329842931937173
+**Testing Score/Accuracy**: 0.7486910994764397
 
-The testing score only improved very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
+The training score increased slightly and the testing score decreased by 2%. Adding more features in this case did not help with increasing accuracy, and it made overfitting worse.
 
-We carefully reviewed the data we have, and realized that we actually don't always have a good amount of data in every cause category for accurate prediction:
+Despite this combination of features' poor performance, we wanted to try using `GridSearchCV` to find the best hyperparameters like `max_depth`, `min_samples_split`, and `criterion` to maximize these features accuracy:
 
-<style>
-.markdown-table {
-  font-size: 90%;
-  width: 100%;
-}
-.markdown-table th {
-  background-color: #f2f2f2;
-}
-.markdown-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-.markdown-table tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-</style>
-<table class="markdown-table">
-  <thead>
-    <tr>
-      <th>CAUSE.CATEGORY</th>
-      <th>Count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>equipment failure</td>
-      <td>57</td>
-    </tr>
-    <tr>
-      <td>fuel supply emergency</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <td>intentional attack</td>
-      <td>418</td>
-    </tr>
-    <tr>
-      <td>islanding</td>
-      <td>46</td>
-    </tr>
-    <tr>
-      <td>public appeal</td>
-      <td>69</td>
-    </tr>
-    <tr>
-      <td>severe weather</td>
-      <td>759</td>
-    </tr>
-    <tr>
-      <td>system operability disruption</td>
-      <td>126</td>
-    </tr>
-  </tbody>
-</table>
+`{'classifier__criterion': 'gini',
+ 'classifier__max_depth': 10,
+ 'classifier__min_samples_split': 4}`
+
+Using these hyperparameters we got:
+
+**Training Score/Accuracy**: 0.905511811023622
+
+**Testing Score/Accuracy**: 0.756544502617801
+
+Great! The training score decreased significantly and the testing score increase by 1%, which means the use of hyperparameters was effective in reducing overfitting and improving generalization abilities.
+
+With this in mind, we decided to give our baseline model a second chance, and introduced the same hyperparameter options to it. Through `GridSearchCV`, our baseline model picked the following hyperparameters:
+
+`{'classifier__criterion': 'gini',
+ 'classifier__max_depth': 10,
+ 'classifier__min_samples_split': 5}`
+
+Using these hyperparameters in our baseline model we got:
+
+**Training Score/Accuracy**: 0.9212598425196851 (0.9921259842519685 before hyperparameters)
+
+**Testing Score/Accuracy**: 0.7984293193717278 (0.7617801047120419 before hyperparameters)
+
+The training score decreased significantly by 7% and the testing score increased by almost 4%, further confirming that the introduction of hyperparameter can greatly help with
+
 
 To solve this, we decided to drop some outliers, which include outliers that fall outside of roughly 99% Confidence Interval, and those whose outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duration and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` are still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
 
