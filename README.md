@@ -38,7 +38,7 @@ During the process, we noticed that some numeric columns like `'OUTAGE.DURATION'
 
 We also discovered that there are some values in the `'DEMAND.LOSS.MW'` column that are smaller than 300 megawatts, which does not make sense in this dataset as it contains only major power outages with at least 300 MW demand loss, therefore we treated those values as incorrect entries and converted them into `NaN` as well for consistency, and will be addressing them later on in the project.
 
-Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the consistent naming conventions used across the dataset. The first five rows of the cleansed dataframe can be seen below using `clean.head()`:
+Lastly, we renamed the `'U.S._STATE'` column to `'US.STATE'` to align with the consistent naming conventions used across the dataset. The first five rows of the cleaned dataframe can be seen below using `clean.head()`:
 
  <style>
 .markdown-table {
