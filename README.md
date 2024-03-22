@@ -387,10 +387,104 @@ The training and testing scores seemed quite different, as the training score is
 
 ## Final Model
 
-To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and why.
+To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and make our predictions better.
 
-First, we recognize that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**. Random forests are also better at error reduction and allows feature selection, which adds more randomness that can improve accuracy of our prediction.
+First, we recognized that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**.
 
+We wanted to add 2 more feature columns to improve the prediction accuracy, and we chose the following 2 categorical columns `'CLIMATE.REGION'` and `'CLIMATE.CATEGORY'`, because we thought they might have some correlation with one of the causes `severe weather` since weather and climate are very correlated.
 
+In order to use those two categorical variables, we performed the following feature engineering:
 
+`'CLIMATE.CATEGORY'`: only contains `'Warm'`, `'Cold'` or `'Normal'`
+- it is an **ordinal** categorical variable that can be represented by a list of meaningful ordered number, therefore we performed <u>ordinal encoding</u> and added it as a feature in our prediction model
 
+`'CLIMATE.REGION'`: since this variable describes the climate region of the outage, there is no order between its unique values
+- it is a **nominal** categorical variable that can be made useful after performing <u>One Hot Endoding</u>
+
+The resulting dataframe looks like this:
+
+<style>
+.markdown-table {
+  font-size: 90%;
+  width: 100%;
+}
+.markdown-table th {
+  background-color: #f2f2f2;
+}
+.markdown-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.markdown-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+</style>
+<table class="markdown-table">
+  <thead>
+    <tr>
+      <th>CAUSE.CATEGORY</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>std</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>equipment failure</td>
+      <td>1850.56</td>
+      <td>224</td>
+      <td>10618.28</td>
+      <td>1</td>
+      <td>78377</td>
+    </tr>
+    <tr>
+      <td>fuel supply emergency</td>
+      <td>13484.03</td>
+      <td>3960</td>
+      <td>21012.32</td>
+      <td>1</td>
+      <td>108653</td>
+    </tr>
+    <tr>
+      <td>intentional attack</td>
+      <td>521.93</td>
+      <td>92.5</td>
+      <td>1561.35</td>
+      <td>1</td>
+      <td>21360</td>
+    </tr>
+    <tr>
+      <td>islanding</td>
+      <td>200.55</td>
+      <td>77.5</td>
+      <td>306.11</td>
+      <td>1</td>
+      <td>1254</td>
+    </tr>
+    <tr>
+      <td>public appeal</td>
+      <td>1468.45</td>
+      <td>455</td>
+      <td>2032.24</td>
+      <td>30</td>
+      <td>11867</td>
+    </tr>
+    <tr>
+      <td>severe weather</td>
+      <td>3899.71</td>
+      <td>2464</td>
+      <td>5144.38</td>
+      <td>1</td>
+      <td>49320</td>
+    </tr>
+    <tr>
+      <td>system operability disruption</td>
+      <td>747.09</td>
+      <td>222</td>
+      <td>2249.38</td>
+      <td>5</td>
+      <td>23187</td>
+    </tr>
+  </tbody>
+</table>
