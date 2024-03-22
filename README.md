@@ -349,7 +349,27 @@ Our goal in this prediction section is: **We want to predict the possible cause 
 
 We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with two relevant columns, and improve our model with an upgrade to **random forest** with nine revelant columns in total.
 
+Columns involved in the prediction process are:
+- `'CAUSE.CATEGORY'` (We are **predicting** this)
+- `'US.STATE'` (You would know which state the outage happened in before knowing the cause)
+- `'OUTAGE.DURATION'` (You can time the outage duration before knowing the cause of it)
+- `'DEMAND.LOSS.MW'` (Many calculate the demand loss before figuring out the cause of outage because that can take a while)
+- `'CLIMATE.REGION'` (You would know this at the time of outage)
+- `'CLIMATE.CATEGORY'` (You would know this at the time of outage)
+
+All columns that we are using to predict `'CAUSE.CATEGORY'` listed above are information that can be gathered before knowing what the cause of the power outage is and follows the rule of “time of prediction”.
+
 **Response Variable**: `'CAUSE.CATEGORY'`
 
 In our project, we have identified `'CAUSE.CATEGORY'` as the key response variable for prediction, recognizing its substantial implications for effectively managing and mitigating the effects of major power outages. This foresight allows for a more strategic allocation of resources, enhances communication, safety protocols, and most importantly, aids in minimizing the length and impact of outages. At last, the ability to anticipate the cause of power outages empowers us to better safeguard our communities, <u>ensuring that no one is left in the dark, metaphorically and literally.</u>
 
+**Prediction Evaluation Metric**: Accuracy Score using `.score()`
+
+For evaluating our model, we chose to utilize the default `.score()` method, which provides the accuracy score. This metric measures the <u>ratio of correct predictions to the total predictions.</u>
+
+Accuracy is particularly useful for our models' assessments due to its simple definition and easy application. If we are presenting our prediction to non-technical audience, it would be important to choose a metric that they could understand.
+
+It also offers a baseline insight into the model’s effectiveness. However, we recognize accuracy's limitations in imbalanced datasets, where it might not fully capture the model's performance nuances. Thus, while accuracy was chosen for its initial clarity on the model's predictive capabilities, we remain open to incorporating more nuanced metrics in the future like Precision, Recall, and F1 Score for a comprehensive evaluation, depending on the dataset specifics and our analysis objectives.
+
+
+## Baseline Model
