@@ -9,7 +9,7 @@ By Yiran Zhao and Chengxi Xu
 
 In today's world, reliable electricity is essential. But what happens when the lights go out?
 
-Our project explores an extensive dataset that documents major power outage events across the continental United States from January 2000 to July 2016. This dataset provides a comprehensive look at the severe weather-induced power outages along with various geographical, climatic, and economic characteristics of the affected states. With a total of 55 variables, the dataset offers a rich repository for analyzing the patterns and causes behind significant power outages that impact at least 50,000 customers or result in an unplanned firm load loss of at least 300 MW, defined as a major power outage by the Department of Energy.
+Our project explores an extensive dataset that documents major power outage events across the continental United States from January 2000 to July 2016. This dataset provides a comprehensive look at the severe weather-induced power outages along with various geographical, climatic, and economic characteristics of the affected states. With a total of 55 variables, the dataset offers a rich repository for analyzing the patterns and causes behind significant power outages that impact at least 50,000 customers or result in an unplanned firm load loss of at least 300 MW.
 
 Our main investigation question is: <strong><u>Are outage durations significantly impacted by the outage causes?</u></strong>
 
