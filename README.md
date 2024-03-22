@@ -347,7 +347,7 @@ We want to test whether the causes of power outage have significant impact on ou
 
 Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction questions is a **multiclass classfication** question.
 
-We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with 2 relevant columns, and hope to improve our model with an upgrade to **random forest** with 5 revelant columns in total.
+We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with 2 relevant columns, and hope to improve our model with an upgrade to **random forest** with 4 revelant columns in total.
 
 Columns involved in the prediction process are:
 - `'CAUSE.CATEGORY'` (We are **predicting** this)
@@ -372,3 +372,15 @@ It also offers a baseline insight into the model’s effectiveness. However, we 
 
 
 ## Baseline Model
+
+Our baseline model is a **multiclass decision tree** used to predict the `'CAUSE.CATEGORY'` with 2 columns: `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
+
+Both `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` are **quantitative** columns, we performed imputation on these features to handle any missing values, ensuring that our dataset was complete and ready for analysis. We purposely left those two variables as it is without performing any feature engineering to compare our baseline model with the improved one later. This baseline model is intended to be a very simple model to be compared to the final model.
+
+To create our baseline model, we split our imputed dataset into training and testing sets using the basic `train_test_split()` method, ensuring to exclude non-predictive columns such as `'US.STATE'`, `'CLIMATE.REGION'`, and `'CLIMATE.CATEGORY'`. After training the decision tree classifier on the training set, we evaluated its performance on both the training and testing sets:
+
+**Training Score/Accuracy**: 0.9956255468066492
+
+**Testing Score/Accuracy**: 0.7303664921465969
+
+The training and testing score seemed quite different, as the training score is almost perfect and the testing score only reached about 73%. This is a sign that the predtion model overfitted on the training set, reducing its generalization  ability.
