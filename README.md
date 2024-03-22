@@ -613,3 +613,21 @@ Using the above hyperparameters we perfomred our final prediction:
 **Testing Score/Accuracy**: 0.7857142857142857
 
 This final prediction model looks better than our baseline model and the previous attempts with other variables. As you can see, although the training score went down, but the testing score improved by almost 5%. This is a sign that we <u>reduced overfitting on the traning model and improved generalization on our testing model.</u>
+
+
+## Fairness Analysis
+
+We want to analyze if our model is fair to predict results for two different groups (produce the same accuracy), there for we separated the dataset into two groups:
+
+- Group X: Electricity outage in cold climate category
+- Group Y: Electricity outage in rest of the climate category
+- p-value: standard 5% (0.05)
+- Test Statistic: difference in accuracy
+
+We chose **RMSE** as our evaluation metric and **difference in accuracy** as the test statistic and performed permutation tests.
+
+- **Null Hypothesis**: Group A and Group B have the same performance (average RMSE) under the final model so the model is fair.
+- **Alternative Hypothesis**: Group A and Group B do NOT have the same performance (average RMSE) under the final model so the model is NOT fair.
+
+
+
