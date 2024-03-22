@@ -471,7 +471,7 @@ We want to analyze if our model is fair to predict results for two different gro
 
 - Group X: Electricity outage in cold climate category
 - Group Y: Electricity outage in the rest of the climate category
-- p-value: standard 5% (0.05)
+- Significance Level: standard 5% (0.05)
 - Test Statistic: difference in accuracy
 
 We chose **RMSE** as our evaluation metric and **difference in accuracy** as the test statistic and performed permutation tests.
