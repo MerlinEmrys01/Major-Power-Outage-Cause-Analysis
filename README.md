@@ -462,7 +462,7 @@ While the testing score stayed the same, we thought it might be because the test
 
 ### Conclusion On Final Prediction Model
 
-After experimenting with different feature engineering and hyperparameters, we decided to use the <u>baseline model with hyperparameters added as our final model</u>. It has a relatively low training accuracy score and the highest testing accuracy score, making it the best at <u>generalizing predictions for unseen datasets.</u>
+After experimenting with different feature engineering and hyperparameters, we decided to use the <u>baseline model with hyperparameters added as our final model</u>. It has a relatively low training accuracy score and the highest testing accuracy score, making it the best at <u>generalizing predictions for unseen data.</u>
 
 
 ## **Fairness Analysis**
