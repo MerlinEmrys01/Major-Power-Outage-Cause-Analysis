@@ -438,31 +438,31 @@ Using these hyperparameters in our baseline model we got:
 
 **Testing Score/Accuracy**: 0.7984293193717278 (0.7617801047120419 before hyperparameters)
 
-The training score decreased significantly by 7% and the testing score increased by almost 4%, further confirming that the introduction of hyperparameter can greatly help with
+The training score decreased significantly by 7% and the testing score increased by almost 4%. This is a sign that we <u>reduced overfitting on the training model and improved generalization on our testing model.</u> It also further confirms that well tuned hyperparameters can help the prediction model find the right "balance" between bais and variance, and better fit the data with lesser noise. 
 
+However, we did not want to stop our attempt to improve our model from there. After looking through our dataset again, we realized that there were some extremely short outage duration and some extremely long duration outliers that were way above the mean and median of its category. We suspected that these outliers from both sides could have been one reason our prediction wasn't getting a higher accuracy score due to frequent overfitting on the training data's outliers.
 
-To solve this, we decided to drop some outliers, which include outliers that fall outside of roughly 99% Confidence Interval, and those whose outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duration and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` are still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
+To solve this, we decided to impute those outliers with random values from the column using probabilistic imputation. That includes outliers that fall outside of roughly 99% Confidence Interval because a duration that's way too short is not helpful for us to identify a trend between duration and cause. 
 
-After dropping the outliers, we introduced a search for the best hyperparameters to maximize our prediction accuracy. The potential hyperparameters are shown below:
+After dropping the outliers, we introduced a search for the best hyperparameters again to maximize our prediction accuracy. After running `GridSearchCV()` we got:
 
-`hyperparameters = {
-    'max_depth': [4, 5, 6, 7, 10, None], 
-    'min_samples_split': [2, 3, 4, 5, 10],
-    'criterion': ['gini', 'entropy']
-}`
+`{'classifier__criterion': 'gini',
+ 'classifier__max_depth': 10,
+ 'classifier__min_samples_split': 10}`
 
-Running the `GridSearchCV()` k fold cross validation, we got:
-- **Best criterion**: entropy
-- **Best max-depth**: 7
-- **Best min_samples_split**: 3
+Using the above hyperparameters we performed the prediction:
 
-Using the above hyperparameters we performed our final prediction:
+**Training Score/Accuracy**: 0.8486439195100612
 
-**Training Score/Accuracy**: 0.8959435626102292
+**Testing Score/Accuracy**: 0.7617801047120419
 
-**Testing Score/Accuracy**: 0.7857142857142857
+Interestingly the training score decreased by quite a lot, but testing score stayed the same before and after introducing the hyperparameters and replacing the outliers. The decrease in training score could be suggesting that our model might have been overfitting to the outliers in the training data, and through assigning random values to the outliers, we achieved an overfitting reduction.
 
-This final prediction model looks better than our baseline model and the previous attempts with other variables. As you can see, although the training score went down, but the testing score improved by almost 5%. This is a sign that we <u>reduced overfitting on the training model and improved generalization on our testing model.</u>
+While the testing score stayed the same, we thought it might be because the test distribution was never changed. If the test set's outlier distribution closely aligns with that of the non-outliers, then altering outliers in the training set may not impact the test score.
+
+### Conclusion On Final Prediction Model
+
+After experimenting with different feature engineering and hyperparameters, we decided to use the <u>baseline model with hyperparameters added as our final model</u>. It has a relatively low training accuracy score and the highest testing accuracy score, making it the best at <u>generalizing predictions for unseen datasets.</u>
 
 
 ## **Fairness Analysis**
@@ -487,3 +487,10 @@ The p-values we got after running the permutation tests were usually around 0.9,
   height="440"
   frameborder="0"
 ></iframe>
+
+
+
+
+## Outro 🔋
+
+As we wrap up our power outage project, we've learned a lot about how and why outages happen and started figuring out ways to predict them better. Our goal has always been to help people get ready for power outages before they occur. While we've made good progress, there's still a lot more work to do. We're excited to keep improving our prediction model and making it more accurate and helpful for everyone. This project has shown us the power of working with data, and we hope our findings will be useful for future efforts in this area. Looking ahead, we're committed to making our model more precise, so that communities can be better prepared for whatever comes their way. Thank you for following along on this journey, and we hope to bring more updates and improvements in the future.
