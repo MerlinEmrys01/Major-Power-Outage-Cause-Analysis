@@ -592,3 +592,11 @@ We carefully reviewed the data we have, and realized that we actually don't alwa
 </table>
 
 To solve this, we decided to drop some outliers, which includes outliers that fall outside of roughly 99% Confidence Interval, and those who's outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duraion and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` is still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
+
+After dropping the outliers, we introdiced a search for the best hyperparameters to maximize our prediction accuracy. The potential hyperparameters are shown below:
+
+`hyperparameters = {
+    'max_depth': [4, 5, 6, 7, 10, None], 
+    'min_samples_split': [2, 3, 4, 5, 10],
+    'criterion': ['gini', 'entropy']
+}`
