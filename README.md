@@ -535,4 +535,58 @@ After feature engineering, we tried the same steps as our baseline model, except
 
 The testing score only improve very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
 
-Our second attempt
+We carefully reviewed the data we have, and realized that we actually don't always have a good amount of data in every cause category:
+
+<style>
+.markdown-table {
+  font-size: 90%;
+  width: 100%;
+}
+.markdown-table th {
+  background-color: #f2f2f2;
+}
+.markdown-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.markdown-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+</style>
+<table class="markdown-table">
+  <thead>
+    <tr>
+      <th>CAUSE.CATEGORY</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>equipment failure</td>
+      <td>57</td>
+    </tr>
+    <tr>
+      <td>fuel supply emergency</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>intentional attack</td>
+      <td>418</td>
+    </tr>
+    <tr>
+      <td>islanding</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <td>public appeal</td>
+      <td>69</td>
+    </tr>
+    <tr>
+      <td>severe weather</td>
+      <td>759</td>
+    </tr>
+    <tr>
+      <td>system operability disruption</td>
+      <td>126</td>
+    </tr>
+  </tbody>
+</table>
