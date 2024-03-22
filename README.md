@@ -268,7 +268,7 @@ One example of MAR permutation testing is below:
 - This is an example of MAR test between `climate category` and `demand loss`. 
 - Null Hypothesis: Missingness of `'CLIMATE.CATEGORY'` does NOT depend on `'DEMAND.LOSS.MW'`
 - Alternative Hypothesis: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
-- The p-value for this test is around `0.703`, which suggests that we `fail the reject` the null hypothesis, and the two columns are not dependent on each other.
+- The p-value for this test is around `0.703`, which suggests that we `fail the reject` the null hypothesis at 5% significance level, and the two columns are not dependent on each other.
 
 The outcomes of this testing reinforced our initial understanding, revealing no significant association between the missing `'CLIMATE.CATEGORY'` data and other variables, therefore the missing data is NMAR.
 
@@ -289,7 +289,7 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
   frameborder="0"
 ></iframe>
 
-- The p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here.
+- The p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here at 5% significance level.
 
 #### Testing whether `'DEMAND.LOSS.MW'` is MAR that depends on `'CAUSE.CATEGORY'`
 - Null Hypothesis: Missingness of `'DEMAND.LOSS.MW'` does NOT depends on `'CAUSE.CATEGORY'`
@@ -302,6 +302,34 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
   frameborder="0"
 ></iframe>
 
-- Again, the p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here.
+- Again, the p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here at 5% significance level.
 
 ### Imputation
+
+During our data analysis, we identified that the missing data within the `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` columns occurs randomly, known as MAR (Missing At Random). Given this insight, we chose probabilistic imputation to fill in these gaps.
+
+**Why Probabilistic Imputation?**
+
+Probabilistic imputation was chosen for its ability to generate multiple plausible values for each missing entry that can mirror the distribution observed in our dataset. This method is well suited to our situation for a few reasons:
+
+- It maintains the richness of our dataset by avoiding oversimplifications that might arise from single value imputations.
+- It utilizes the existing data patterns to make informed estimations, so that our imputed values are as realistic and accurate as possible.
+- It preserves the integrity and structure of our dataset, laying a solid foundation for subsequent analyses in the later parts of this project.
+
+## Hypothesis Testing
+
+We want to test whether the causes of power outage have significant impact on outage duration. In order to do so, we ran permutation tests on all causes with the `'OUTAGE.DURATION'` column.
+
+**Null Hypothesis**: Causes of power outage have no significant effect on outage duration length.
+**Alternative Hypothesis**: Causes of power outage have significant effect on outage duration length.
+**Test Statistic**: Two-Tailed Test Difference In Means
+**Significance Level**: standard 5% (0.05)
+**p-value**: 0.0 for almost all tests except 0.664 for `operability disruption`
+**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is save to reject the null hypothesis, and we can conclude that the causes of power outage have significant effect on outage duration length.
+
+<iframe
+  src="assets/Hypothesis.html"
+  width="800"
+  height="440"
+  frameborder="0"
+></iframe>
