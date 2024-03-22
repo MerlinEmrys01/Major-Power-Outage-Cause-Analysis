@@ -283,7 +283,7 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
 - Alternative Hypothesis: Missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`
 
 <iframe
-  src="assets/NMAR Example NMAR Example ('CAUSE.CATEGORY', 'OUTAGE.DURATION').html"
+  src="assets/NMAR Example ('CAUSE.CATEGORY', 'OUTAGE.DURATION').html"
   width="800"
   height="440"
   frameborder="0"
