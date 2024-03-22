@@ -341,4 +341,15 @@ We want to test whether the causes of power outage have significant impact on ou
 
 
 
+
+
 ## Framing a Prediction Problem
+
+Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction questions is a **multiclass classfication** question.
+
+We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with two relevant columns, and improve our model with an upgrade to **random forest** with nine revelant columns in total.
+
+**Response Variable**: `'CAUSE.CATEGORY'`
+
+In our project, we have identified `'CAUSE.CATEGORY'` as the key response variable for prediction, recognizing its substantial implications for effectively managing and mitigating the effects of major power outages. This foresight allows for a more strategic allocation of resources, enhances communication, safety protocols, and most importantly, aids in minimizing the length and impact of outages. At last, the ability to anticipate the cause of power outages empowers us to better safeguard our communities, <u>ensuring that no one is left in the dark, metaphorically and literally.</u>
+
