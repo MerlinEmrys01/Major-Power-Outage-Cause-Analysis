@@ -347,11 +347,10 @@ We want to test whether the causes of power outage have significant impact on ou
 
 Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction questions is a **multiclass classfication** question.
 
-We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with two relevant columns, and improve our model with an upgrade to **random forest** with nine revelant columns in total.
+We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with 2 relevant columns, and hope to improve our model with an upgrade to **random forest** with 5 revelant columns in total.
 
 Columns involved in the prediction process are:
 - `'CAUSE.CATEGORY'` (We are **predicting** this)
-- `'US.STATE'` (You would know which state the outage happened in before knowing the cause)
 - `'OUTAGE.DURATION'` (You can time the outage duration before knowing the cause of it)
 - `'DEMAND.LOSS.MW'` (Many calculate the demand loss before figuring out the cause of outage because that can take a while)
 - `'CLIMATE.REGION'` (You would know this at the time of outage)
