@@ -249,3 +249,28 @@ We used `clean.groupby('CAUSE.CATEGORY')['OUTAGE.DURATION'].agg(['mean', 'median
 
 From the table we can confirm that `fuel supply emergency` has the highest mean duration, but at the same time it also has the hghest standard deviation, which means the data is more spread out. One interesting fact is that `public appeal` has the highest minimum outage duration of 30 minutes out of all other causes.
 
+## **Assessment of Missingness**
+
+### NMAR Analysis
+
+When we examined the `'CLIMATE.CATEGORY'` column, we discovered a pattern of missing data that falls under Not Missing At Random (NMAR). It's crucial to recognize that the collection of climate category data operates independently from other outage related information. This independence means the presence or absence of climate category data does not depend on other variables/columns such as the specifics of the outage or oceanic El Niño/La Niña (ONI) index at the time of outage. So the lack of climate category data is directly linked to `'CLIMATE.CATEGORY'` itself rather than the observed data.
+
+To validate our hypothesis that the missing `'CLIMATE.CATEGORY'` data was NMAR, we conducted MAR permutation testing with seemlying correlated columns like `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'DEMAND.LOSS.MW'`, etc. This process was aimed at identifying any potential relationships between the missing climate category instances and other features within the dataset. 
+
+One example of MAR permutation testing is below:
+<iframe
+  src="assets/NMAR Example.html"
+  width="800"
+  height="440"
+  frameborder="0"
+></iframe>
+
+- This is an example of MAR test between `climate category` and `demand loss`. 
+- Null Hypothesis: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
+- Alternative Hypothesis: Missingness of `'CLIMATE.CATEGORY'` does NOT depends on `'DEMAND.LOSS.MW'`
+- The p-value for this test is `0.703`, which suggests that we fail the reject the null hypothesis, and the two columns are not dependent on each other.
+
+The outcomes of this testing reinforced our initial understanding, revealing no significant association between the missing `'CLIMATE.CATEGORY'` data and other variables, therefore the missing data is NMAR.
+
+With the above evidence, we recognized that the missing climate category data could not be accurately imputed from available data, we opted to exclude the 9 rows featuring missing `'CLIMATE.CATEGORY'` data from our analysis to prevent the introduction of bias into our study and ensure the precision of our findings.
+
