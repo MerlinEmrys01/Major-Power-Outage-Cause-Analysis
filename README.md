@@ -266,11 +266,40 @@ One example of MAR permutation testing is below:
 ></iframe>
 
 - This is an example of MAR test between `climate category` and `demand loss`. 
-- Null Hypothesis: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
-- Alternative Hypothesis: Missingness of `'CLIMATE.CATEGORY'` does NOT depends on `'DEMAND.LOSS.MW'`
-- The p-value for this test is `0.703`, which suggests that we fail the reject the null hypothesis, and the two columns are not dependent on each other.
+- Null Hypothesis: Missingness of `'CLIMATE.CATEGORY'` does NOT depend on `'DEMAND.LOSS.MW'`
+- Alternative Hypothesis: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
+- The p-value for this test is around `0.703`, which suggests that we `fail the reject` the null hypothesis, and the two columns are not dependent on each other.
 
 The outcomes of this testing reinforced our initial understanding, revealing no significant association between the missing `'CLIMATE.CATEGORY'` data and other variables, therefore the missing data is NMAR.
 
 With the above evidence, we recognized that the missing climate category data could not be accurately imputed from available data, we opted to exclude the 9 rows featuring missing `'CLIMATE.CATEGORY'` data from our analysis to prevent the introduction of bias into our study and ensure the precision of our findings.
 
+### Missingness Dependency
+
+The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'CAUSE.CATEGORY'`. We will be using the `Total Variation Distance` (TVD) as our test statistic to see if the selected columns are Missing At Random (MAR).
+
+#### Testing whether `'OUTAGE.DURATION'` is MAR that depends on `'CAUSE.CATEGORY'`
+- Null Hypothesis: Missingness of `'OUTAGE.DURATION'` does NOT depends on `'CAUSE.CATEGORY'`
+- Alternative Hypothesis: Missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`
+
+<iframe
+  src="assets/NMAR Example OUTAGE.DURATION.html"
+  width="800"
+  height="440"
+  frameborder="0"
+></iframe>
+
+- The p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here.
+
+#### Testing whether `'DEMAND.LOSS.MW'` is MAR that depends on `'CAUSE.CATEGORY'`
+- Null Hypothesis: Missingness of `'DEMAND.LOSS.MW'` does NOT depends on `'CAUSE.CATEGORY'`
+- Alternative Hypothesis: Missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`
+
+<iframe
+  src="assets/NMAR Example DEMAND.LOSS.MW.html"
+  width="800"
+  height="440"
+  frameborder="0"
+></iframe>
+
+- Again, the p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here.
