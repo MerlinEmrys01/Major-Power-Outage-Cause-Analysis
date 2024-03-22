@@ -272,7 +272,7 @@ One example of MAR permutation testing is below:
 
 The outcomes of this testing reinforced our initial understanding, revealing no significant association between the missing `'CLIMATE.CATEGORY'` data and other variables, therefore the missing data is NMAR.
 
-With the above evidence, we recognized that the missing climate category data could not be accurately imputed from available data, we opted to exclude the 9 rows featuring missing `'CLIMATE.CATEGORY'` data from our analysis to prevent the introduction of bias into our study and ensure the precision of our findings.
+With the above evidence, we recognized that the missing climate category data could not be accurately imputed from available data, so we opted to exclude the 9 rows featuring missing `'CLIMATE.CATEGORY'` data from our analysis to prevent the introduction of bias into our study and ensure the precision of our findings.
 
 ### Missingness Dependency
 
