@@ -321,11 +321,16 @@ Probabilistic imputation was chosen for its ability to generate multiple plausib
 We want to test whether the causes of power outage have significant impact on outage duration. In order to do so, we ran permutation tests on all causes with the `'OUTAGE.DURATION'` column.
 
 **Null Hypothesis**: Causes of power outage have no significant effect on outage duration length.
+
 **Alternative Hypothesis**: Causes of power outage have significant effect on outage duration length.
+
 **Test Statistic**: Two-Tailed Test Difference In Means
+
 **Significance Level**: standard 5% (0.05)
+
 **p-value**: 0.0 for almost all tests except 0.664 for `operability disruption`
-**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is save to reject the null hypothesis, and we can conclude that the causes of power outage have significant effect on outage duration length.
+
+**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is save to reject the null hypothesis, and we can conclude that the causes of power outage may have significant effect on outage duration length.
 
 <iframe
   src="assets/Hypothesis.html"
@@ -333,3 +338,7 @@ We want to test whether the causes of power outage have significant impact on ou
   height="440"
   frameborder="0"
 ></iframe>
+
+
+
+## Framing a Prediction Problem
