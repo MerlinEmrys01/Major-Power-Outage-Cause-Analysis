@@ -491,6 +491,6 @@ The p-values we got after running the permutation tests were usually around 0.6-
 
 
 
-## Outro 🔋
+## **Outro** 🔋
 
 As we wrap up our power outage project, we've learned a lot about how and why outages happen and started figuring out ways to predict them better. Our goal has always been to help people get ready for power outages before they occur. While we've made good progress, there's still a lot more work to do. We're excited to keep improving our prediction model and making it more accurate and helpful for everyone. This project has shown us the power of working with data, and we hope our findings will be useful for future efforts in this area. Looking ahead, we're committed to making our model more precise, so that communities can be better prepared for whatever comes their way. Thank you for following along on this journey, and we hope to bring more updates and improvements in the future.
