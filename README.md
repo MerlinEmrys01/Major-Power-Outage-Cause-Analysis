@@ -328,9 +328,9 @@ We want to test whether the causes of power outages have significant impact on o
 
 **Significance Level**: standard 5% (0.05)
 
-**p-value**: 0.0 for almost all tests except 0.664 for `operability disruption`
+**p-value**: 0.0 for all tests
 
-**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is safe to reject the null hypothesis, and we can conclude that the causes of power outage may have significant effect on outage duration length.
+**Conclusion**: All causes have a p-value of 0.0 within our test runs, which is smaller than our significance level 0.05, therefore it is safe to reject the null hypothesis, and we can conclude that the causes of power outage may have significant effect on outage duration length.
 
 <iframe
   src="assets/Hypothesis.html"
