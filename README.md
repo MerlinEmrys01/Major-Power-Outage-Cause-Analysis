@@ -32,7 +32,7 @@ Here are the relevant columns for our study:
 
 ### Data Cleaning 
 
-We began our project by changing the `outage` dataset type from `xlsx` to `csv`, and imported data from the corrected file `outage.csv` into a pandas DataFrame. We identified that the first row contained units rather than actual data, so we removed it for clarity and accuracy. To ensure we only work with relevant data and to avoide doing unnecessary computation on irrelevant columns, we made a new dataframe called `clean` that only contains columns that pertained to our analysis: `'U.S._STATE'`, `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'DEMAND.LOSS.MW'`, `'CLIMATE.REGION'`, and `'CLIMATE.CATEGORY'`. 
+We began our project by changing the `outage` dataset type from `xlsx` to `csv`, and imported data from the corrected file `outage.csv` into a pandas DataFrame. We identified that the first row contained units rather than actual data, so we removed it for clarity and accuracy. To ensure we only work with relevant data and to avoid doing unnecessary computation on irrelevant columns, we made a new dataframe called `clean` that only contains columns that are applicable to our analysis: `'U.S._STATE'`, `'CAUSE.CATEGORY'`, `'OUTAGE.DURATION'`, `'DEMAND.LOSS.MW'`, `'CLIMATE.REGION'`, and `'CLIMATE.CATEGORY'`. 
 
 During the process, we noticed that some numeric columns like `OUTAGE.DURATION` and `DEMAND.LOSS.MW` had entries in string format that cannot be used for quantitative analysis, so we used `pd.to_numeric` to transform them into usable numeric data. We also addressed the inconsistent representation of some missing values. Columns like `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` should not have entries with `'0'` values because all data in the dataset should be a record of major power outage, thus all values in `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` should be greater than `0`. We replaced `'0'` with `NaN` for consistency, and will analyze the missingness in later steps.
 
@@ -124,14 +124,14 @@ This bar chart shows the distribution of `'CAUSE.CATEGORY'`:
   frameborder="0"
 ></iframe>
 
-- We could tell from the chart that within the recoreded major power outages, `severe weather`, `intentional attack`, and `system operability disruption` were the top 3 most popular cuases, with `severe weather` being the most significant cause.
+- We could tell from the chart that within the recorded major power outages, `severe weather`, `intentional attack`, and `system operability disruption` were the top 3 most popular causes, with `severe weather` being the most significant cause.
 
 This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were so many unique duration lengths, we engineered a feature called `Duration Category` and categorized the durations into 4 different levels, `Short`, `Medium`, `Long`, and `No Data`:
 
 - Outages in the `Short` category last up to an hour (60 minutes)
 - Outages in the `Medium` category last up to a day (1440 minutes)
 - Outages in the `Long` category last more than a day (more than 1440 minutes)
-- Outages in the `No Data` category have no recoreded duration in the given dataset
+- Outages in the `No Data` category have no recorded duration in the given dataset
 
 <iframe
   src="assets/Duration Categories Distribution.html"
@@ -140,7 +140,7 @@ This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were s
   frameborder="0"
 ></iframe>
 
-- From this pie chart we could conclude that most of the recoreded major power outages in this dataset has either `Medium` or `Long` outage durations.
+- From this pie chart we could conclude that most of the recorded major power outages in this dataset have either `Medium` or `Long` outage durations.
 
 
 ### Bivariate Analysis
@@ -247,7 +247,7 @@ We used `clean.groupby('CAUSE.CATEGORY')['OUTAGE.DURATION'].agg(['mean', 'median
   </tbody>
 </table>
 
-From the table we can confirm that `fuel supply emergency` has the highest mean duration, but at the same time it also has the hghest standard deviation, which means the data is more spread out. One interesting fact is that `public appeal` has the highest minimum outage duration of 30 minutes out of all other causes.
+From the table we can confirm that `fuel supply emergency` has the highest mean duration, but at the same time it also has the highest standard deviation, which means the data is more spread out. One interesting fact is that `public appeal` has the highest minimum outage duration of 30 minutes out of all other causes.
 
 ## **Assessment of Missingness**
 
@@ -255,7 +255,7 @@ From the table we can confirm that `fuel supply emergency` has the highest mean 
 
 When we examined the `'CLIMATE.CATEGORY'` column, we discovered a pattern of missing data that falls under Not Missing At Random (NMAR). It's crucial to recognize that the collection of climate category data operates independently from other outage related information. This independence means the presence or absence of climate category data does not depend on other variables/columns such as the specifics of the outage or oceanic El Niño/La Niña (ONI) index at the time of outage. So the lack of climate category data is directly linked to `'CLIMATE.CATEGORY'` itself rather than the observed data.
 
-To validate our hypothesis that the missing `'CLIMATE.CATEGORY'` data was NMAR, we conducted MAR permutation testing with seemlying correlated columns like `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'DEMAND.LOSS.MW'`, etc. This process was aimed at identifying any potential relationships between the missing climate category instances and other features within the dataset. 
+To validate our hypothesis that the missing `'CLIMATE.CATEGORY'` data was NMAR, we conducted MAR permutation testing with seemingly correlated columns like `'OUTAGE.DURATION'`, `'CLIMATE.REGION'`, `'DEMAND.LOSS.MW'`, etc. This process was aimed at identifying any potential relationships between the missing climate category instances and other features within the dataset. 
 
 One example of MAR permutation testing is below:
 <iframe
@@ -279,7 +279,7 @@ With the above evidence, we recognized that the missing climate category data co
 The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'CAUSE.CATEGORY'`. We will be using the `Total Variation Distance` (TVD) as our test statistic to see if the selected columns are Missing At Random (MAR).
 
 #### Testing whether `'OUTAGE.DURATION'` is MAR that depends on `'CAUSE.CATEGORY'`
-- Null Hypothesis: Missingness of `'OUTAGE.DURATION'` does NOT depends on `'CAUSE.CATEGORY'`
+- Null Hypothesis: Missingness of `'OUTAGE.DURATION'` does NOT depend on `'CAUSE.CATEGORY'`
 - Alternative Hypothesis: Missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`
 
 <iframe
@@ -292,7 +292,7 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
 - The p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here at 5% significance level.
 
 #### Testing whether `'DEMAND.LOSS.MW'` is MAR that depends on `'CAUSE.CATEGORY'`
-- Null Hypothesis: Missingness of `'DEMAND.LOSS.MW'` does NOT depends on `'CAUSE.CATEGORY'`
+- Null Hypothesis: Missingness of `'DEMAND.LOSS.MW'` does NOT depend on `'CAUSE.CATEGORY'`
 - Alternative Hypothesis: Missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`
 
 <iframe
@@ -330,7 +330,7 @@ We want to test whether the causes of power outage have significant impact on ou
 
 **p-value**: 0.0 for almost all tests except 0.664 for `operability disruption`
 
-**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is save to reject the null hypothesis, and we can conclude that the causes of power outage may have significant effect on outage duration length.
+**Conclusion**: Almost all causes (except `operability disruption`) have a p-value of 0.0, which is smaller than our significance level 0.05, therefore it is safe to reject the null hypothesis, and we can conclude that the causes of power outage may have significant effect on outage duration length.
 
 <iframe
   src="assets/Hypothesis.html"
@@ -345,9 +345,9 @@ We want to test whether the causes of power outage have significant impact on ou
 
 ## **Framing a Prediction Problem**
 
-Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction questions is a **multiclass classfication** question.
+Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction question is a **multiclass classification** question.
 
-We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with 2 relevant columns, and hope to improve our model with an upgrade to **random forest** with 4 revelant columns in total.
+We will be starting with a basic baseline **classifier** model that uses a **decision tree** model with 2 relevant columns, and hope to improve our model with an upgrade to **random forest** with 4 relevant columns in total.
 
 Columns involved in the prediction process are:
 - `'CAUSE.CATEGORY'` (We are **predicting** this)
@@ -356,7 +356,7 @@ Columns involved in the prediction process are:
 - `'CLIMATE.REGION'` (You would know this at the time of outage)
 - `'CLIMATE.CATEGORY'` (You would know this at the time of outage)
 
-All columns that we are using to predict `'CAUSE.CATEGORY'` listed above are information that can be gathered before knowing what the cause of the power outage is and follows the rule of “time of prediction”.
+All columns that we are using to predict `'CAUSE.CATEGORY'` listed above are information that can be gathered before knowing what the cause of the power outage is and following the rule of “time of prediction”.
 
 **Response Variable**: `'CAUSE.CATEGORY'`
 
@@ -383,11 +383,11 @@ To create our baseline model, we split our imputed dataset into training and tes
 
 **Testing Score/Accuracy**: 0.7303664921465969
 
-The training and testing scores seemed quite different, as the training score is almost perfect and the testing score only reached about 73%. This is a sign that the predtion model **overfitted** on the training set, <u>reducing its generalization ability.</u>
+The training and testing scores seemed quite different, as the training score was almost perfect and the testing score only reached about 73%. This is a sign that the prediction model **overfitted** on the training set, <u>reducing its generalization ability.</u>
 
 ## **Final Model**
 
-To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and make our predictions better.
+To improve the accuracy of our prediction, we thought of a couple of steps to experiment to see which features would increase the accuracy score and make our predictions better.
 
 First, we recognized that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**.
 
@@ -396,10 +396,10 @@ We wanted to add 2 more feature columns to improve the prediction accuracy, and 
 In order to use those two categorical variables, we performed the following feature engineering:
 
 `'CLIMATE.CATEGORY'`: only contains `'Warm'`, `'Cold'` or `'Normal'`
-- it is an **ordinal** categorical variable that can be represented by a list of meaningful ordered number, therefore we performed <u>ordinal encoding</u> and added it as a feature in our prediction model
+- it is an **ordinal** categorical variable that can be represented by a list of meaningful ordered numbers, therefore we performed <u>ordinal encoding</u> and added it as a feature in our prediction model
 
 `'CLIMATE.REGION'`: since this variable describes the climate region of the outage, there is no order between its unique values
-- it is a **nominal** categorical variable that can be made useful after performing <u>One Hot Endoding</u>
+- it is a **nominal** categorical variable that can be made useful after performing <u>One Hot Encoding</u>
 
 The resulting dataframe looks like this:
 
@@ -533,7 +533,7 @@ After feature engineering, we tried the same steps as our baseline model, except
 
 **Testing Score/Accuracy**: 0.7329842931937173
 
-The testing score only improve very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
+The testing score only improved very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
 
 We carefully reviewed the data we have, and realized that we actually don't always have a good amount of data in every cause category for accurate prediction:
 
@@ -591,7 +591,7 @@ We carefully reviewed the data we have, and realized that we actually don't alwa
   </tbody>
 </table>
 
-To solve this, we decided to drop some outliers, which includes outliers that fall outside of roughly 99% Confidence Interval, and those who's outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duraion and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` is still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
+To solve this, we decided to drop some outliers, which include outliers that fall outside of roughly 99% Confidence Interval, and those whose outage duration is under 10 minutes because a duration that's way too short is not helpful for us to identify a trend between duration and cause. It is ok to drop duration under 10 minutes because as we see from the **Univariate Analysis** part, the majority of the duration is greater than 1440 minutes, and even the durations labeled `short` are still within the range of an hour (60 minutes), so dropping rows under 10 minutes won't take out too much data.
 
 After dropping the outliers, we introduced a search for the best hyperparameters to maximize our prediction accuracy. The potential hyperparameters are shown below:
 
@@ -606,21 +606,21 @@ Running the `GridSearchCV()` k fold cross validation, we got:
 - **Best max-depth**: 7
 - **Best min_samples_split**: 3
 
-Using the above hyperparameters we perfomred our final prediction:
+Using the above hyperparameters we performed our final prediction:
 
 **Training Score/Accuracy**: 0.8959435626102292
 
 **Testing Score/Accuracy**: 0.7857142857142857
 
-This final prediction model looks better than our baseline model and the previous attempts with other variables. As you can see, although the training score went down, but the testing score improved by almost 5%. This is a sign that we <u>reduced overfitting on the traning model and improved generalization on our testing model.</u>
+This final prediction model looks better than our baseline model and the previous attempts with other variables. As you can see, although the training score went down, but the testing score improved by almost 5%. This is a sign that we <u>reduced overfitting on the training model and improved generalization on our testing model.</u>
 
 
 ## **Fairness Analysis**
 
-We want to analyze if our model is fair to predict results for two different groups (produce the same accuracy), there for we separated the dataset into two groups:
+We want to analyze if our model is fair to predict results for two different groups (produce the same accuracy), therefore we separated the dataset into two groups:
 
 - Group X: Electricity outage in cold climate category
-- Group Y: Electricity outage in rest of the climate category
+- Group Y: Electricity outage in the rest of the climate category
 - p-value: standard 5% (0.05)
 - Test Statistic: difference in accuracy
 
@@ -629,7 +629,7 @@ We chose **RMSE** as our evaluation metric and **difference in accuracy** as the
 - **Null Hypothesis**: Group A and Group B have the same performance (average RMSE) under the final model so the model is fair.
 - **Alternative Hypothesis**: Group A and Group B do NOT have the same performance (average RMSE) under the final model so the model is NOT fair.
 
-The p-values we got after running the permutation tests were ususally around 0.9, which indicates that it is safe to say that we fail to reject the null hypothesis, and that Group A and Group B most likely have the same performance (average RMSE) under the final model so the model is likely fair.
+The p-values we got after running the permutation tests were usually around 0.9, which indicates that it is safe to say that we failed to reject the null hypothesis, and that Group A and Group B most likely have the same performance (average RMSE) under the final model so the model is likely fair.
 
 <iframe
   src="assets/fairness.html"
