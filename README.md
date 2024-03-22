@@ -600,3 +600,14 @@ After dropping the outliers, we introdiced a search for the best hyperparameters
     'min_samples_split': [2, 3, 4, 5, 10],
     'criterion': ['gini', 'entropy']
 }`
+
+Running the `GridSearchCV()` k fold cross validation, we got:
+- **Best criterion**: entropy
+- **Best max-depth**: 7
+- **Best min_samples_split**: 3
+
+Using the above hyperparameters we perfomred our final prediction:
+
+**Training Score/Accuracy**: 0.8959435626102292
+
+**Testing Score/Accuracy**: 0.7857142857142857
