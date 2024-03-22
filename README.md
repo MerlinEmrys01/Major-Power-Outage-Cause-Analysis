@@ -421,70 +421,118 @@ The resulting dataframe looks like this:
 <table class="markdown-table">
   <thead>
     <tr>
+      <th>US.STATE</th>
       <th>CAUSE.CATEGORY</th>
-      <th>mean</th>
-      <th>median</th>
-      <th>std</th>
-      <th>min</th>
-      <th>max</th>
+      <th>OUTAGE.DURATION</th>
+      <th>DEMAND.LOSS.MW</th>
+      <th>CLIMATE.REGION</th>
+      <th>CLIMATE.CATEGORY</th>
+      <th>CLIMATE.REGION == East North Central</th>
+      <th>CLIMATE.REGION == Central</th>
+      <th>CLIMATE.REGION == South</th>
+      <th>CLIMATE.REGION == Southeast</th>
+      <th>CLIMATE.REGION == Northwest</th>
+      <th>CLIMATE.REGION == Southwest</th>
+      <th>CLIMATE.REGION == Northeast</th>
+      <th>CLIMATE.REGION == West North Central</th>
+      <th>CLIMATE.REGION == West</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>equipment failure</td>
-      <td>1850.56</td>
-      <td>224</td>
-      <td>10618.28</td>
-      <td>1</td>
-      <td>78377</td>
-    </tr>
-    <tr>
-      <td>fuel supply emergency</td>
-      <td>13484.03</td>
-      <td>3960</td>
-      <td>21012.32</td>
-      <td>1</td>
-      <td>108653</td>
-    </tr>
-    <tr>
-      <td>intentional attack</td>
-      <td>521.93</td>
-      <td>92.5</td>
-      <td>1561.35</td>
-      <td>1</td>
-      <td>21360</td>
-    </tr>
-    <tr>
-      <td>islanding</td>
-      <td>200.55</td>
-      <td>77.5</td>
-      <td>306.11</td>
-      <td>1</td>
-      <td>1254</td>
-    </tr>
-    <tr>
-      <td>public appeal</td>
-      <td>1468.45</td>
-      <td>455</td>
-      <td>2032.24</td>
-      <td>30</td>
-      <td>11867</td>
-    </tr>
-    <tr>
+      <td>Minnesota</td>
       <td>severe weather</td>
-      <td>3899.71</td>
-      <td>2464</td>
-      <td>5144.38</td>
+      <td>3060</td>
+      <td>850</td>
+      <td>East North Central</td>
+      <td>2</td>
       <td>1</td>
-      <td>49320</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
-      <td>system operability disruption</td>
-      <td>747.09</td>
-      <td>222</td>
-      <td>2249.38</td>
-      <td>5</td>
-      <td>23187</td>
+      <td>Minnesota</td>
+      <td>intentional attack</td>
+      <td>1</td>
+      <td>455</td>
+      <td>East North Central</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>3000</td>
+      <td>1250</td>
+      <td>East North Central</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>2550</td>
+      <td>746</td>
+      <td>East North Central</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Minnesota</td>
+      <td>severe weather</td>
+      <td>1740</td>
+      <td>700</td>
+      <td>East North Central</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
+
+After feature engineering, we tried the same steps as our baseline model, except this time using a Random Forest, and got:
+
+**Training Score/Accuracy**: 0.9991251093613298
+
+**Testing Score/Accuracy**: 0.7329842931937173
+
+The testing score only improve very slightly, which has no meaning in this case, and there is an increase in overfitting, therefore we decided to drop these two columns and only focus on our original columns `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
+
+Our second attempt
