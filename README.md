@@ -412,7 +412,7 @@ After feature engineering, we tried the same steps as our baseline model, except
 
 The training score increased slightly and the testing score decreased by 2%. Adding more features in this case did not help with increasing accuracy, and it made overfitting worse.
 
-Despite this combination of features' poor performance, we wanted to try using `GridSearchCV` to find the best hyperparameters like `max_depth`, `min_samples_split`, and `criterion` to maximize these features accuracy:
+Despite this combination of features' poor performance, we wanted to try using `GridSearchCV` to find the best hyperparameters like `max_depth`, `min_samples_split`, and `criterion` to maximize these features' accuracy:
 
 `{'classifier__criterion': 'gini',
  'classifier__max_depth': 10,
