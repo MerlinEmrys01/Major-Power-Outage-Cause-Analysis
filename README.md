@@ -1,7 +1,7 @@
 # Watt's Up!
 ## A US Major Power Outage Analysis
 
-This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building and model fairness analysis under the course DSC 80 at UC San Diego.
+This is a comprehensive project reflecting our skills in data cleaning & analysis, missingness analysis & imputation, hypothesis testing, prediction model building, and model fairness analysis under the course DSC 80 at UC San Diego.
 
 By Yiran Zhao and Chengxi Xu
 
@@ -318,11 +318,11 @@ Probabilistic imputation was chosen for its ability to generate multiple plausib
 
 ## **Hypothesis Testing**
 
-We want to test whether the causes of power outage have significant impact on outage duration. In order to do so, we ran permutation tests on all causes with the `'OUTAGE.DURATION'` column.
+We want to test whether the causes of power outages have significant impact on outage duration. In order to do so, we ran permutation tests on all causes with the `'OUTAGE.DURATION'` column.
 
-**Null Hypothesis**: Causes of power outage have no significant effect on outage duration length.
+**Null Hypothesis**: Causes of power outages have no significant effect on outage duration length.
 
-**Alternative Hypothesis**: Causes of power outage have significant effect on outage duration length.
+**Alternative Hypothesis**: Causes of power outages have significant effect on outage duration length.
 
 **Test Statistic**: Two-Tailed Test Difference In Means
 
@@ -370,7 +370,7 @@ Accuracy is particularly useful for our models' assessments due to its simple de
 
 It also offers a baseline insight into the model’s effectiveness. However, we recognize accuracy's limitations in imbalanced datasets, where it might not fully capture the model's performance nuances. Thus, while accuracy was chosen for its initial clarity on the model's predictive capabilities, we remain open to incorporating more nuanced metrics in the future like Precision, Recall, and F1 Score for a comprehensive evaluation, depending on the dataset specifics and our analysis objectives.
 
-**For comparison consistency, we will be using the same unseen and seen datasets for both the baseline model and the final model so we could compare their accuracy score on the same unit.**
+**For comparison consistency, we will be using the same unseen and seen datasets for both the baseline model and the final model so we can compare their accuracy score on the same unit.**
 
 ## **Baseline Model**
 
@@ -394,7 +394,7 @@ To improve the accuracy of our prediction, we thought of a couple of steps to ex
 
 First, we recognized that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**.
 
-We wanted to add 2 more feature columns to improve the prediction accuracy, and we chose the following 2 categorical columns `'CLIMATE.REGION'` and `'CLIMATE.CATEGORY'`, because we thought they might have some correlation with one of the causes `severe weather` since weather and climate are usually talked about toghther.
+We wanted to add 2 more feature columns to improve the prediction accuracy, and we chose the following 2 categorical columns `'CLIMATE.REGION'` and `'CLIMATE.CATEGORY'`, because we thought they might have some correlation with one of the causes `severe weather` since weather and climate are usually talked about together.
 
 In order to use those two categorical variables, we performed the following feature engineering through a new `pipeline`:
 
@@ -424,9 +424,9 @@ Using these hyperparameters we got:
 
 **Testing Score/Accuracy**: 0.756544502617801
 
-Great! The training score decreased significantly and the testing score increase by 1%, which means the use of hyperparameters was effective in reducing overfitting and improving generalization abilities.
+Great! The training score decreased significantly and the testing score increased by 1%, which means the use of hyperparameters was effective in reducing overfitting and improving generalization abilities.
 
-With this in mind, we decided to give our baseline model a second chance, and introduced the same hyperparameter options to it. Through `GridSearchCV`, our baseline model picked the following hyperparameters:
+With this in mind, we decided to give our baseline model a second chance and introduced the same hyperparameter options to it. Through `GridSearchCV`, our baseline model picked the following hyperparameters:
 
 `{'classifier__criterion': 'gini',
  'classifier__max_depth': 10,
@@ -438,9 +438,9 @@ Using these hyperparameters in our baseline model we got:
 
 **Testing Score/Accuracy**: 0.7984293193717278 (0.7617801047120419 before hyperparameters)
 
-The training score decreased significantly by 7% and the testing score increased by almost 4%. This is a sign that we <u>reduced overfitting on the training model and improved generalization on our testing model.</u> It also further confirms that well tuned hyperparameters can help the prediction model find the right "balance" between bais and variance, and better fit the data with lesser noise. 
+The training score decreased significantly by 7% and the testing score increased by almost 4%. This is a sign that we <u>reduced overfitting on the training model and improved generalization on our testing model.</u> It also further confirms that well tuned hyperparameters can help the prediction model find the right "balance" between bias and variance, and better fit the data with lesser noise. 
 
-However, we did not want to stop our attempt to improve our model from there. After looking through our dataset again, we realized that there were some extremely short outage duration and some extremely long duration outliers that were way above the mean and median of its category. We suspected that these outliers from both sides could have been one reason our prediction wasn't getting a higher accuracy score due to frequent overfitting on the training data's outliers.
+However, we did not want to stop our attempt to improve our model from there. After looking through our dataset again, we realized that there were some extremely short outage duration and some extremely long duration outliers that were way above the mean and median of their category. We suspected that these outliers from both sides could have been one reason our prediction wasn't getting a higher accuracy score due to frequent overfitting on the training data's outliers.
 
 To solve this, we decided to impute those outliers with random values from the column using probabilistic imputation. That includes outliers that fall outside of roughly 99% Confidence Interval because a duration that's way too short is not helpful for us to identify a trend between duration and cause. 
 
