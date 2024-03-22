@@ -316,7 +316,7 @@ Probabilistic imputation was chosen for its ability to generate multiple plausib
 - It utilizes the existing data patterns to make informed estimations, so that our imputed values are as realistic and accurate as possible.
 - It preserves the integrity and structure of our dataset, laying a solid foundation for subsequent analyses in the later parts of this project.
 
-## Hypothesis Testing
+## **Hypothesis Testing**
 
 We want to test whether the causes of power outage have significant impact on outage duration. In order to do so, we ran permutation tests on all causes with the `'OUTAGE.DURATION'` column.
 
@@ -343,7 +343,7 @@ We want to test whether the causes of power outage have significant impact on ou
 
 
 
-## Framing a Prediction Problem
+## **Framing a Prediction Problem**
 
 Our goal in this prediction section is: **We want to predict the possible cause of a major power outage given some relevant information.**, thus this prediction questions is a **multiclass classfication** question.
 
@@ -371,7 +371,7 @@ Accuracy is particularly useful for our models' assessments due to its simple de
 It also offers a baseline insight into the model’s effectiveness. However, we recognize accuracy's limitations in imbalanced datasets, where it might not fully capture the model's performance nuances. Thus, while accuracy was chosen for its initial clarity on the model's predictive capabilities, we remain open to incorporating more nuanced metrics in the future like Precision, Recall, and F1 Score for a comprehensive evaluation, depending on the dataset specifics and our analysis objectives.
 
 
-## Baseline Model
+## **Baseline Model**
 
 Our baseline model is a **multiclass decision tree** used to predict the `'CAUSE.CATEGORY'` with 2 columns: `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'`.
 
@@ -385,7 +385,7 @@ To create our baseline model, we split our imputed dataset into training and tes
 
 The training and testing scores seemed quite different, as the training score is almost perfect and the testing score only reached about 73%. This is a sign that the predtion model **overfitted** on the training set, <u>reducing its generalization ability.</u>
 
-## Final Model
+## **Final Model**
 
 To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and make our predictions better.
 
@@ -615,7 +615,7 @@ Using the above hyperparameters we perfomred our final prediction:
 This final prediction model looks better than our baseline model and the previous attempts with other variables. As you can see, although the training score went down, but the testing score improved by almost 5%. This is a sign that we <u>reduced overfitting on the traning model and improved generalization on our testing model.</u>
 
 
-## Fairness Analysis
+## **Fairness Analysis**
 
 We want to analyze if our model is fair to predict results for two different groups (produce the same accuracy), there for we separated the dataset into two groups:
 
