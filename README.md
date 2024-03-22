@@ -385,5 +385,9 @@ To create our baseline model, we split our imputed dataset into training and tes
 
 The training and testing scores seemed quite different, as the training score is almost perfect and the testing score only reached about 73%. This is a sign that the predtion model **overfitted** on the training set, <u>reducing its generalization ability.</u>
 
-##
+## Final Model
+
+To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and why.
+
+First, we recognize that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a random forest.
 
