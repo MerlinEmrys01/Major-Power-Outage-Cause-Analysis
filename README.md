@@ -259,7 +259,7 @@ To validate our hypothesis that the missing `'CLIMATE.CATEGORY'` data was NMAR, 
 
 One example of MAR permutation testing is below:
 <iframe
-  src="assets/NMAR Example.html"
+  src="assets/NMAR Example ('CLIMATE.CATEGORY', 'DEMAND.LOSS.MW').html"
   width="800"
   height="440"
   frameborder="0"
@@ -283,7 +283,7 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
 - Alternative Hypothesis: Missingness of `'OUTAGE.DURATION'` depends on `'CAUSE.CATEGORY'`
 
 <iframe
-  src="assets/NMAR Example OUTAGE.DURATION.html"
+  src="assets/NMAR Example NMAR Example ('CAUSE.CATEGORY', 'OUTAGE.DURATION').html"
   width="800"
   height="440"
   frameborder="0"
@@ -296,10 +296,12 @@ The missingness of `'OUTAGE.DURATION'` and `'DEMAND.LOSS.MW'` both depend on `'C
 - Alternative Hypothesis: Missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`
 
 <iframe
-  src="assets/NMAR Example DEMAND.LOSS.MW.html"
+  src="assets/NMAR Example ('CAUSE.CATEGORY', 'DEMAND.LOSS.MW').html"
   width="800"
   height="440"
   frameborder="0"
 ></iframe>
 
 - Again, the p-value is `0.0`, suggesting that there is no significant evidence to say the missingness of `'DEMAND.LOSS.MW'` depends on `'CAUSE.CATEGORY'`, so we reject the null hypothesis here.
+
+### Imputation
