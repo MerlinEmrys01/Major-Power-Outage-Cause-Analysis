@@ -389,5 +389,8 @@ The training and testing scores seemed quite different, as the training score is
 
 To improve the accuracy of our prediction, we thought of a couple steps to experiment to see which features would increase the accuracy score and why.
 
-First, we recognize that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a random forest.
+First, we recognize that decision trees are very prone to overfitting, and in order to solve this problem, we updated our model to a **Random Forest**. Random forests are also better at error reduction and allows feature selection, which adds more randomness that can improve accuracy of our prediction.
+
+
+
 
