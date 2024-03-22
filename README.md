@@ -120,7 +120,7 @@ This bar chart shows the distribution of `'CAUSE.CATEGORY'`:
 <iframe
   src="assets/Counts by Cause Category.html"
   width="800"
-  height="400"
+  height="440"
   frameborder="0"
 ></iframe>
 
@@ -136,7 +136,7 @@ This pie chart shows the distribution of `'OUTAGE.DURATION'`. Since there were s
 <iframe
   src="assets/Duration Categories Distribution.html"
   width="800"
-  height="400"
+  height="440"
   frameborder="0"
 ></iframe>
 
@@ -150,16 +150,16 @@ In our bivariate analysis, we will be using a box plot to see if there's a signi
 <iframe
   src="assets/Outage Duration by Cause Category.html"
   width="800"
-  height="400"
+  height="440"
   frameborder="0"
 ></iframe>
 
-- From the box plot, we could tell that different cause categories have different average, median, and maximum durations, which might be hint to suggestion that there's a correlation between `cause category` and `outage duration`.
+- From the box plot, we could tell that different cause categories have different average, median, and maximum durations, which might be a hint to suggest that there's a correlation between `cause category` and `outage duration`.
 
+### Interesting Aggregates
 
+We used `clean.groupby('CAUSE.CATEGORY')['OUTAGE.DURATION'].agg(['mean', 'median', 'std', 'min', 'max']).reset_index()` to find the `mean`, `median`, `standard deviation`, `minimum`, and `maximum` duration of each cause category, and organized them in an aggregate table:
 
-
-aggregate table:
 <style>
 .markdown-table {
   font-size: 90%;
@@ -246,3 +246,6 @@ aggregate table:
     </tr>
   </tbody>
 </table>
+
+From the table we can confirm that `fuel supply emergency` has the highest mean duration, but at the same time it also has the hghest standard deviation, which means the data is more spread out. One interesting fact is that `public appeal` has the highest minimum outage duration of 30 minutes out of all other causes.
+
