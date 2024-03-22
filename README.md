@@ -266,9 +266,9 @@ One example of MAR permutation testing is below:
 ></iframe>
 
 - This is an example of MAR test between `climate category` and `demand loss`. 
-- Null Hypothesis: Missingness of `'CLIMATE.CATEGORY'` does NOT depend on `'DEMAND.LOSS.MW'`
-- Alternative Hypothesis: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
-- The p-value for this test is around `0.703`, which suggests that we `fail the reject` the null hypothesis at 5% significance level, and the two columns are not dependent on each other.
+- **Null Hypothesis**: Missingness of `'CLIMATE.CATEGORY'` does NOT depend on `'DEMAND.LOSS.MW'`
+- **Alternative Hypothesis**: Missingness of `'CLIMATE.CATEGORY'` depends on `'DEMAND.LOSS.MW'`
+- The **p-value** for this test is around `0.703`, which suggests that we `fail to reject` the null hypothesis at 5% significance level, and the two columns are not dependent on each other.
 
 The outcomes of this testing reinforced our initial understanding, revealing no significant association between the missing `'CLIMATE.CATEGORY'` data and other variables, therefore the missing data is NMAR.
 
