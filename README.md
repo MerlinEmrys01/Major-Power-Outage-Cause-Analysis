@@ -479,7 +479,7 @@ We chose **RMSE** as our evaluation metric and **difference in accuracy** as the
 - **Null Hypothesis**: Group A and Group B have the same performance (average RMSE) under the final model so the model is fair.
 - **Alternative Hypothesis**: Group A and Group B do NOT have the same performance (average RMSE) under the final model so the model is NOT fair.
 
-The p-values we got after running the permutation tests were usually around 0.9, which indicates that it is safe to say that we failed to reject the null hypothesis, and that Group A and Group B most likely have the same performance (average RMSE) under the final model so the model is likely fair.
+The p-values we got after running the permutation tests were usually around 0.6-0.9, which indicates that it is safe to say that we failed to reject the null hypothesis, and that Group A and Group B most likely have the same performance (average RMSE) under the final model so the model is likely fair.
 
 <iframe
   src="assets/fairness.html"
